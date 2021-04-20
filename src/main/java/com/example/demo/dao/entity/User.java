@@ -1,95 +1,137 @@
 package com.example.demo.dao.entity;
 
+import com.alibaba.fastjson.annotation.JSONField;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.io.Serializable;
 import java.util.Date;
 
-/**
- * Created by admin on 2017/7/23.
- */
 @Entity
-public class User{
-
+public class User implements Serializable{
     @Id
     @GeneratedValue
-    private Integer id;
+    @JSONField(serialize = false)
+    private int id;
+    @Column(nullable = false)
+    private String openId;
+    @Column(nullable = false)
+    private String nickname;
+    private int sex;
+    @JSONField(serialize = false)
+    private String country;
+    @JSONField(serialize = false)
+    private String province;
+    @JSONField(serialize = false)
+    private String city;
+    @Column(nullable = false)
+    private String headImgUrl;
+    @JSONField(serialize = false)
+    private String privilegeList;
+    @UpdateTimestamp
+    @JSONField(serialize = false, format = "yyyy-MM-dd HH:mm")
+    private Date timestamp;
+    private String phone;
+    @JSONField(serialize = false)
+    private int score = 0;
 
-    private String username;
-
-    private Integer age;
-
-    private Integer phoneNum;
-
-    private String address;
-
-    private String birthDate;
-
-    private Date createTime;
-
-    private Date updateTime;
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public Integer getAge() {
-        return age;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
-    }
-
-    public Integer getPhoneNum() {
-        return phoneNum;
-    }
-
-    public void setPhoneNum(Integer phoneNum) {
-        this.phoneNum = phoneNum;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getBirthDate() {
-        return birthDate;
-    }
-
-    public void setBirthDate(String birthDate) {
-        this.birthDate = birthDate;
-    }
-
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public Date getCreateTime() {
-        return createTime;
+    public String getOpenId() {
+        return openId;
     }
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
+    public void setOpenId(String openId) {
+        this.openId = openId;
     }
 
-    public Date getUpdateTime() {
-        return updateTime;
+    public String getNickname() {
+        return nickname;
     }
 
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
+
+    public int getSex() {
+        return sex;
+    }
+
+    public void setSex(int sex) {
+        this.sex = sex;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getProvince() {
+        return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getHeadImgUrl() {
+        return headImgUrl;
+    }
+
+    public void setHeadImgUrl(String headImgUrl) {
+        this.headImgUrl = headImgUrl;
+    }
+
+    public String getPrivilegeList() {
+        return privilegeList;
+    }
+
+    public void setPrivilegeList(String privilegeList) {
+        this.privilegeList = privilegeList;
+    }
+
+    public Date getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Date timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
 }
