@@ -1,44 +1,95 @@
 package com.example.demo.dao.entity;
 
-import com.alibaba.fastjson.annotation.JSONField;
-import lombok.Data;
-import org.hibernate.annotations.UpdateTimestamp;
-
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * Created by admin on 2017/7/23.
+ */
 @Entity
-@Data
-public class User implements Serializable{
+public class User{
+
     @Id
     @GeneratedValue
-    @JSONField(serialize = false)
-    private int id;
-    @Column(nullable = false)
-    private String openId;
-    @Column(nullable = false)
-    private String nickname;
-    private int sex;
-    @JSONField(serialize = false)
-    private String country;
-    @JSONField(serialize = false)
-    private String province;
-    @JSONField(serialize = false)
-    private String city;
-    @Column(nullable = false)
-    private String headImgUrl;
-    @JSONField(serialize = false)
-    private String privilegeList;
-    @UpdateTimestamp
-    @JSONField(serialize = false, format = "yyyy-MM-dd HH:mm")
-    private Date timestamp;
-    private String phone;
-    @JSONField(serialize = false)
-    private int score = 0;
+    private Integer id;
 
+    private String username;
 
+    private Integer age;
+
+    private Integer phoneNum;
+
+    private String address;
+
+    private String birthDate;
+
+    private Date createTime;
+
+    private Date updateTime;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public Integer getPhoneNum() {
+        return phoneNum;
+    }
+
+    public void setPhoneNum(Integer phoneNum) {
+        this.phoneNum = phoneNum;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(String birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
 }

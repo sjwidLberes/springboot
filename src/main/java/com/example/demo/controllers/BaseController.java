@@ -1,23 +1,25 @@
-package com.example.demo.exception;
+package com.example.demo.controllers;
 
 import com.example.demo.enums.ExceptionEnum;
+import com.example.demo.exception.ParamException;
+import com.example.demo.exception.ServerException;
+import com.example.demo.service.UserService;
+import com.example.demo.vo.request.UserRequestVo;
 import com.example.demo.vo.result.JsonResultVo;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.ControllerAdvice;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
-@ControllerAdvice
-@ResponseBody
-public class GlobalDefaultExceptionHandler {
-    Logger logger = LoggerFactory.getLogger(GlobalDefaultExceptionHandler.class);
+import javax.validation.Valid;
+
+/**
+ * Created by admin on 2017/7/9.
+ */
+public class BaseController {
 
     @ExceptionHandler
+    @ResponseBody
     public JsonResultVo exceptionHandler(Exception e){
-        e.printStackTrace();
-        logger.error("exceptionHandler: " + e.getMessage());
-
         if(e instanceof ParamException){
             ParamException paramException=(ParamException)e;
             return JsonResultVo.buildErrorVo(paramException.getCode(),paramException.getMessage());
@@ -28,4 +30,6 @@ public class GlobalDefaultExceptionHandler {
             return JsonResultVo.buildErrorVo(ExceptionEnum.SERVER_ERROR.getCode(),e.getMessage());
         }
     }
+
+
 }
