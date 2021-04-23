@@ -1,6 +1,7 @@
 package com.example.demo.dao.entity;
 
 import com.alibaba.fastjson.annotation.JSONField;
+import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.Column;
@@ -12,6 +13,7 @@ import java.util.Date;
  * 验证码表（手机/邮箱 身份验证）
  */
 @Entity
+@Data
 public class ValidationCode {
     @Id
     private String validationKey;
@@ -24,35 +26,4 @@ public class ValidationCode {
     @JSONField(format = "yyyy-MM-dd HH:mm")
     private Date timestamp;
 
-    public String getValidationKey() {
-        return validationKey;
-    }
-
-    public void setValidationKey(String validationKey) {
-        this.validationKey = validationKey;
-    }
-
-    public String getValidationCode() {
-        return validationCode;
-    }
-
-    public void setValidationCode(String validationCode) {
-        this.validationCode = validationCode;
-    }
-
-    public String getPurpose() {
-        return purpose;
-    }
-
-    public void setPurpose(String purpose) {
-        this.purpose = purpose;
-    }
-
-    public Date getTimestamp() {
-        return timestamp;
-    }
-
-    public void setTimestamp(Date timestamp) {
-        this.timestamp = timestamp;
-    }
 }
